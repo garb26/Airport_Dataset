@@ -4,15 +4,12 @@ import dash
 import dash_html_components as html
 import dash_core_components as dcc
 from dash.dependencies import Input, Output, State
-from jupyter_dash import JupyterDash
 import plotly.graph_objects as go
 import plotly.express as px
 from dash import no_update
 
-
 # Create a dash application
-app = JupyterDash(__name__)
-JupyterDash.infer_jupyter_proxy_config()
+app = dash.Dash (__name__)
 
 # REVIEW1: Clear the layout and do not display exception till callback gets executed
 app.config.suppress_callback_exceptions = True
@@ -225,4 +222,4 @@ def get_graph(chart, year, children1, children2, c3, c4, c5):
 # Run the app
 if __name__ == '__main__':
     # REVIEW8: Adding dev_tools_ui=False, dev_tools_props_check=False can prevent error appearing before calling callback function
-    app.run_server(mode="inline", host="localhost", debug=False, dev_tools_ui=False, dev_tools_props_check=False)
+    app.run_server()
